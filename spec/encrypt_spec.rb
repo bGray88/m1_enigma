@@ -97,4 +97,44 @@ describe Encrypt do
       expect(encrypt.assemble_shifts_full(message, full_shifts)).to eq(expected)
     end
   end
+
+  describe '#encrypt_decrypt' do
+    it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
+      encrypt        = Encrypt.new
+      converted_key  = Key.new('02715').process_key
+      converted_date = encrypt.process_date(date)
+      single_shifts  = encrypt.create_shifts(converted_key, converted_date)
+      all_shifts     = encrypt.assemble_shifts_full(message, single_shifts)
+      expected       = "keder ohulw"
+
+      expect(encrypt.encrypt('hello world', all_shifts).join).to eq(expected)
+    end
+  end
+
+  describe '#reverse_shifts' do
+    it 'converts the integer elements of full collection of' do
+      encrypt        = Encrypt.new
+      converted_key  = Key.new('02715').process_key
+      converted_date = encrypt.process_date(date)
+      single_shifts  = encrypt.create_shifts(converted_key, converted_date)
+      all_shifts     = encrypt.assemble_shifts_full(message, single_shifts)
+      expected       = [-3, -27, -73, -20, -3, -27, -73, -20, -3, -27, -73, -20]
+
+      expect(encrypt.reverse_shifts(all_shifts)).to eq(expected)
+    end
+  end
+
+  describe '#decrypt' do
+    it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
+      encrypt           = Encrypt.new
+      converted_key     = Key.new('02715').process_key
+      converted_date    = encrypt.process_date(date)
+      single_shifts     = encrypt.create_shifts(converted_key, converted_date)
+      all_shifts        = encrypt.assemble_shifts_full(message, single_shifts)
+      encrypted_message = encrypt.encrypt_decrypt('hello world', all_shifts).join
+      expected          = "hello world"
+
+      expect(encrypt.decrypt(encrypted_message, all_shifts).join).to eq(expected)
+    end
+  end
 end

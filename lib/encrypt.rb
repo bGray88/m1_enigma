@@ -19,6 +19,26 @@ class Encrypt
     [spec_chars, converted_message, converted_key, converted_date]
   end
 
+  def encrypt_decrypt(message, shifts)
+    message.chars.map.with_index do |char, index|
+      char_index = @base_set.index(char)
+      @base_set.rotate(char_index + shifts[index]).first
+    end
+  end
+
+  def encrypt(message, shifts)
+    encrypt_decrypt(message, shifts)
+  end
+
+  def decrypt(message, shifts)
+    reversed_shifts = reverse_shifts(shifts)
+    encrypt_decrypt(message, reversed_shifts)
+  end
+
+  def reverse_shifts(shifts)
+    shifts.map { |shift| -shift }
+  end
+
   def process_date(date)
     date = Time.now.strftime('%d%m%y') if date.nil?
     offset = date.to_i ** 2
