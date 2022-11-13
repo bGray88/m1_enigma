@@ -26,6 +26,10 @@ class Encrypt
     end
   end
 
+  def reverse_shifts(shifts)
+    shifts.map { |shift| -shift }
+  end
+
   def process_date(date)
     date = Time.now.strftime('%d%m%y') if date.nil?
     offset = date.to_i ** 2
