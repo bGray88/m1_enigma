@@ -12,7 +12,7 @@ module Stringable
 
   def strip_string(message, strip_set)
     message = message.chars
-    strip_set.each { |char| message.delete(char[1]) }
+    strip_set.each { |char| message.delete(char) }
     message.join
   end
 end
