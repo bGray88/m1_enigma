@@ -31,4 +31,10 @@ class Encrypt
     chars.each { |char| message.insert(char[0], char[1]) }
     message.join
   end
+
+  def strip_message(message, strip_set)
+    message = message.chars
+    strip_set.each { |char| message.delete(char[1]) }
+    message.join
+  end
 end
