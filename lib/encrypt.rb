@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
+require_relative '../lib/timeable'
+
 # Encrypt class
 class Encrypt
+  include Timeable
 
   attr_reader :base_set,
               :spec_chars_set
@@ -40,7 +43,7 @@ class Encrypt
   end
 
   def process_date(date)
-    date = Time.now.strftime('%d%m%y') if date.nil?
+    date = format_date(date)
     offset = date.to_i ** 2
     offset.to_s[-4..-1].to_i.digits.reverse
   end
