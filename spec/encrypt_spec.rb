@@ -43,4 +43,16 @@ describe Encrypt do
       expect(encrypt.restore_spec_chars('Hello'.chars, [])).to eq('Hello')
     end
   end
+
+  describe '#strip_message' do
+    it 'removes special_characters passed in args from a string' do
+      encrypt = Encrypt.new
+      message = 'Hello!'
+      spec_chars = encrypt.preserve_spec_chars(message)
+
+      expect(encrypt.preserve_spec_chars(message)).to eq([[5, "!"]])
+      expect(encrypt.strip_message(message, spec_chars)).to eq('Hello')
+      expect(encrypt.preserve_spec_chars('')).to eq([])
+    end
+  end
 end
