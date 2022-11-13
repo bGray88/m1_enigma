@@ -18,4 +18,10 @@ describe Timeable do
       expect(dummy.randomize_date).to be_instance_of(Time)
     end
   end
+
+  describe '#format_time_to_simple' do
+    it 'returns a simplified date time string' do
+      expect(dummy.format_time_to_simple(Time.parse('August 4, 1995'))).to eq('040895')
+    end
+  end
 end
