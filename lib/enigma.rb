@@ -1,3 +1,9 @@
 class Enigma
-  def initialize() end
+  def initialize
+    @encrypt = Encrypt.new
+  end
+
+  def encrypt(message, key = nil, date = nil)
+    @encrypt.process(message, key, date)
+  end
 end
