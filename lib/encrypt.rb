@@ -5,7 +5,7 @@ require_relative '../lib/timeable'
 
 # Encrypt class
 class Encrypt
-  include Timeable
+  include Timeable, Stringable
 
   attr_reader :base_set,
               :spec_chars_set
@@ -17,7 +17,7 @@ class Encrypt
 
   def process(message, key = nil, date = nil)
     spec_chars        = preserve_spec_chars(message.downcase)
-    converted_message = strip_message(message.downcase, @spec_chars_set)
+    converted_message = strip_string(message.downcase, @spec_chars_set)
     converted_key     = Key.new(key)
     converted_date    = process_date(date)
     [spec_chars, converted_message, converted_key, converted_date]
@@ -57,12 +57,6 @@ class Encrypt
 
   def restore_spec_chars(message, chars)
     chars.each { |char| message.insert(char[0], char[1]) }
-    message.join
-  end
-
-  def strip_message(message, strip_set)
-    message = message.chars
-    strip_set.each { |char| message.delete(char[1]) }
     message.join
   end
 

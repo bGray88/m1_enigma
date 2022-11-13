@@ -9,4 +9,10 @@ module Stringable
   def nest_pairs(pairs)
     pairs.map { |pair| pair.join.to_i }
   end
+
+  def strip_string(message, strip_set)
+    message = message.chars
+    strip_set.each { |char| message.delete(char[1]) }
+    message.join
+  end
 end
