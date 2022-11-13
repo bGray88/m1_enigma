@@ -2,6 +2,7 @@
 
 require 'rspec'
 require_relative '../lib/encrypt'
+require_relative '../lib/key'
 
 describe Encrypt do
   let(:message) { 'Hello World!' }
@@ -68,6 +69,32 @@ describe Encrypt do
       expect(encrypt.process(message, key, date)[1]).to eq(expected[1])
       expect(encrypt.process(message, key, date)[2].key).to eq(expected[2].key)
       expect(encrypt.process(message, key, date)[3]).to eq(expected[3])
+    end
+  end
+
+  describe '#create_shifts' do
+    it 'provides the necessary rotation assignments using key and offsets' do
+      encrypt        = Encrypt.new
+      converted_key  = Key.new('02715').process_key
+      random_key     = double('key')
+      allow(random_key).to receive(:zip).and_return([[2, 1], [27, 0], [71, 2], [15, 5]])
+      converted_date = encrypt.process_date(date)
+
+      expect(encrypt.create_shifts(converted_key, converted_date)).to eq([3, 27, 73, 20])
+      expect(encrypt.create_shifts(random_key, converted_date)).to eq([3, 27, 73, 20])
+    end
+  end
+
+  describe '#assemble_shifts_full' do
+    it 'creates an array message length long for all rotation index syncing' do
+      encrypt        = Encrypt.new
+      converted_key  = Key.new('02715').process_key
+      converted_date = encrypt.process_date(date)
+      full_shifts    = encrypt.create_shifts(converted_key, converted_date)
+
+      expected = [3, 27, 73, 20, 3, 27, 73, 20, 3, 27, 73, 20]
+
+      expect(encrypt.assemble_shifts_full(message, full_shifts)).to eq(expected)
     end
   end
 end
