@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../lib/timeable'
-require_relative '../lib/calculable'
-require_relative '../lib/crypt'
-
 # Encrypter class
-class Encrypter
+class Encrypt
 
   attr_reader :base_set,
               :spec_chars_set
