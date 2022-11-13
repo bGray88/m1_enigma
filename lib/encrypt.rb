@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Encrypter class
+# Encrypt class
 class Encrypt
 
   attr_reader :base_set,
