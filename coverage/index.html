@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-11-13T13:08:17-07:00">2022-11-13T13:08:17-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-11-13T13:46:38-07:00">2022-11-13T13:46:38-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  98.36%
+  98.69%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.05
+         4.1
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>122</b> relevant lines,
-    <span class="green"><b>120</b> lines covered</span> and
+    <b>153</b> relevant lines,
+    <span class="green"><b>151</b> lines covered</span> and
     <span class="red"><b>2</b> lines missed. </span>
     (<span class="green">
-  98.36%
+  98.69%
 </span>
 )
   </div>
@@ -73,11 +73,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#bff0467f7ef407a62bf22311cad61e3ca1707d9d" class="src_link" title="lib/encrypt.rb">lib/encrypt.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">44</td>
-            <td class="cell--number">25</td>
-            <td class="cell--number">25</td>
+            <td class="cell--number">61</td>
+            <td class="cell--number">34</td>
+            <td class="cell--number">34</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">14.96</td>
+            <td class="cell--number">13.47</td>
             
           </tr>
         
@@ -99,16 +99,16 @@
             <td class="cell--number">10</td>
             <td class="cell--number">9</td>
             <td class="cell--number">1</td>
-            <td class="cell--number">2.20</td>
+            <td class="cell--number">4.50</td>
             
           </tr>
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#dac0bc9a56891b5455e2a90aa6771a8571854460" class="src_link" title="spec/encrypt_spec.rb">spec/encrypt_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">82</td>
-            <td class="cell--number">48</td>
-            <td class="cell--number">48</td>
+            <td class="cell--number">113</td>
+            <td class="cell--number">70</td>
+            <td class="cell--number">70</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.17</td>
             
@@ -167,8 +167,8 @@
     
 
     <div class="t-line-summary">
-      <b>25</b> relevant lines.
-      <span class="green"><b>25</b> lines covered</span> and
+      <b>34</b> relevant lines.
+      <span class="green"><b>34</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -279,8 +279,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="10">
-            <span class="hits">9</span>
+          <li class="covered" data-hits="11" data-linenumber="10">
+            <span class="hits">11</span>
             
 
             
@@ -290,8 +290,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="11">
-            <span class="hits">9</span>
+          <li class="covered" data-hits="11" data-linenumber="11">
+            <span class="hits">11</span>
             
 
             
@@ -417,40 +417,40 @@
 
             
 
-            <code class="ruby">  def process_date(date)</code>
+            <code class="ruby">  def encrypt(message, shifts)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="23">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="1" data-linenumber="23">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    date = Time.now.strftime(&#39;%d%m%y&#39;) if date.nil?</code>
+            <code class="ruby">    message.chars.map.with_index do |char, index|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="24">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="11" data-linenumber="24">
+            <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">    offset = date.to_i ** 2</code>
+            <code class="ruby">      char_index = @base_set.index(char)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="25">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="11" data-linenumber="25">
+            <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">    offset.to_s[-4..-1].to_i.digits.reverse</code>
+            <code class="ruby">      @base_set.rotate(char_index + shifts[index]).first</code>
           </li>
         </div>
       
@@ -461,7 +461,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -472,62 +472,62 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="28">
+          <li class="covered" data-hits="1" data-linenumber="29">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def preserve_spec_chars(message)</code>
+            <code class="ruby">  def process_date(date)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="29">
+          <li class="covered" data-hits="9" data-linenumber="30">
             <span class="hits">9</span>
             
 
             
 
-            <code class="ruby">    message.chars.filter_map.with_index do |char, index|</code>
+            <code class="ruby">    date = Time.now.strftime(&#39;%d%m%y&#39;) if date.nil?</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="96" data-linenumber="30">
-            <span class="hits">96</span>
+          <li class="covered" data-hits="9" data-linenumber="31">
+            <span class="hits">9</span>
             
 
             
 
-            <code class="ruby">      [index, char] if @spec_chars_set.include?(char)</code>
+            <code class="ruby">    offset = date.to_i ** 2</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="31">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="32">
-            
+          <li class="covered" data-hits="9" data-linenumber="32">
+            <span class="hits">9</span>
             
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    offset.to_s[-4..-1].to_i.digits.reverse</code>
           </li>
         </div>
       
@@ -538,51 +538,51 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="34">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="34">
+          <li class="covered" data-hits="1" data-linenumber="35">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def restore_spec_chars(message, chars)</code>
+            <code class="ruby">  def preserve_spec_chars(message)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="35">
-            <span class="hits">3</span>
+          <li class="covered" data-hits="9" data-linenumber="36">
+            <span class="hits">9</span>
             
 
             
 
-            <code class="ruby">    chars.each { |char| message.insert(char[0], char[1]) }</code>
+            <code class="ruby">    message.chars.filter_map.with_index do |char, index|</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="36">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="96" data-linenumber="37">
+            <span class="hits">96</span>
             
 
             
 
-            <code class="ruby">    message.join</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="37">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
+            <code class="ruby">      [index, char] if @spec_chars_set.include?(char)</code>
           </li>
         </div>
       
@@ -593,56 +593,12 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="39">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def strip_message(message, strip_set)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="7" data-linenumber="40">
-            <span class="hits">7</span>
-            
-
-            
-
-            <code class="ruby">    message = message.chars</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="178" data-linenumber="41">
-            <span class="hits">178</span>
-            
-
-            
-
-            <code class="ruby">    strip_set.each { |char| message.delete(char[1]) }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="7" data-linenumber="42">
-            <span class="hits">7</span>
-            
-
-            
-
-            <code class="ruby">    message.join</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="43">
+          <li class="never" data-hits="" data-linenumber="39">
             
             
 
@@ -653,7 +609,238 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="40">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="41">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def restore_spec_chars(message, chars)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="42">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">    chars.each { |char| message.insert(char[0], char[1]) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="43">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    message.join</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="never" data-hits="" data-linenumber="44">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="45">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def strip_message(message, strip_set)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="7" data-linenumber="47">
+            <span class="hits">7</span>
+            
+
+            
+
+            <code class="ruby">    message = message.chars</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="178" data-linenumber="48">
+            <span class="hits">178</span>
+            
+
+            
+
+            <code class="ruby">    strip_set.each { |char| message.delete(char[1]) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="7" data-linenumber="49">
+            <span class="hits">7</span>
+            
+
+            
+
+            <code class="ruby">    message.join</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="50">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="51">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="52">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def create_shifts(keys, offsets)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="20" data-linenumber="53">
+            <span class="hits">20</span>
+            
+
+            
+
+            <code class="ruby">    keys.zip(offsets).map { |set| set.sum }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="54">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="55">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="56">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def assemble_shifts_full(message, shifts)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="57">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    (0..message.length).each_with_object([]) do |num, array|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="26" data-linenumber="58">
+            <span class="hits">26</span>
+            
+
+            
+
+            <code class="ruby">      array.concat(shifts) if (num % 4).zero?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="59">
+            
+            
+
+            
+
+            <code class="ruby">    end[0...message.length]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="61">
             
             
 
@@ -913,8 +1100,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="9">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="12" data-linenumber="9">
+            <span class="hits">12</span>
             
 
             
@@ -1001,8 +1188,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="17">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="4" data-linenumber="17">
+            <span class="hits">4</span>
             
 
             
@@ -1012,8 +1199,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="18">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="4" data-linenumber="18">
+            <span class="hits">4</span>
             
 
             
@@ -1023,8 +1210,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="19">
-            <span class="hits">5</span>
+          <li class="covered" data-hits="20" data-linenumber="19">
+            <span class="hits">20</span>
             
 
             
@@ -1074,8 +1261,8 @@
     
 
     <div class="t-line-summary">
-      <b>48</b> relevant lines.
-      <span class="green"><b>48</b> lines covered</span> and
+      <b>70</b> relevant lines.
+      <span class="green"><b>70</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -1131,7 +1318,18 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="5">
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">require_relative &#39;../lib/key&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="6">
             
             
 
@@ -1142,7 +1340,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="6">
+          <li class="covered" data-hits="1" data-linenumber="7">
             <span class="hits">1</span>
             
 
@@ -1153,8 +1351,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="7">
-            <span class="hits">5</span>
+          <li class="covered" data-hits="7" data-linenumber="8">
+            <span class="hits">7</span>
             
 
             
@@ -1164,7 +1362,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="8">
+          <li class="covered" data-hits="2" data-linenumber="9">
             <span class="hits">2</span>
             
 
@@ -1175,8 +1373,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="9">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="6" data-linenumber="10">
+            <span class="hits">6</span>
             
 
             
@@ -1186,24 +1384,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="10">
+          <li class="never" data-hits="" data-linenumber="11">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  describe &#39;#initialize&#39; do</code>
           </li>
         </div>
       
@@ -1214,7 +1401,7 @@
 
             
 
-            <code class="ruby">    it &#39;exists and has attributes&#39; do</code>
+            <code class="ruby">  describe &#39;#initialize&#39; do</code>
           </li>
         </div>
       
@@ -1225,29 +1412,29 @@
 
             
 
+            <code class="ruby">    it &#39;exists and has attributes&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="14">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      encrypt = Encrypt.new</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="15">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(encrypt.base_set[0]).to eq(&#39;a&#39;)</code>
           </li>
         </div>
       
@@ -1258,7 +1445,7 @@
 
             
 
-            <code class="ruby">      expect(encrypt.spec_chars_set[0]).to eq(&#39;!&#39;)</code>
+            <code class="ruby">      expect(encrypt.base_set[0]).to eq(&#39;a&#39;)</code>
           </li>
         </div>
       
@@ -1269,18 +1456,18 @@
 
             
 
-            <code class="ruby">      expect(encrypt).to be_instance_of(Encrypt)</code>
+            <code class="ruby">      expect(encrypt.spec_chars_set[0]).to eq(&#39;!&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="18">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="18">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(encrypt).to be_instance_of(Encrypt)</code>
           </li>
         </div>
       
@@ -1291,7 +1478,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1302,18 +1489,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="21">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="21">
+            
             
 
             
 
-            <code class="ruby">  describe &#39;#process_date&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1324,7 +1511,7 @@
 
             
 
-            <code class="ruby">    it &#39;converts the date into a four element collection or random collection of four if no passed args&#39; do</code>
+            <code class="ruby">  describe &#39;#process_date&#39; do</code>
           </li>
         </div>
       
@@ -1335,12 +1522,23 @@
 
             
 
+            <code class="ruby">    it &#39;converts the date into a four element collection or random collection of four if no passed args&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="24">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      encrypt = Encrypt.new</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="24">
+          <li class="never" data-hits="" data-linenumber="25">
             
             
 
@@ -1351,7 +1549,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="25">
+          <li class="covered" data-hits="1" data-linenumber="26">
             <span class="hits">1</span>
             
 
@@ -1362,7 +1560,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="27">
             
             
 
@@ -1373,7 +1571,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="27">
+          <li class="covered" data-hits="1" data-linenumber="28">
             <span class="hits">1</span>
             
 
@@ -1384,7 +1582,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="28">
+          <li class="never" data-hits="" data-linenumber="29">
             
             
 
@@ -1395,7 +1593,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="29">
+          <li class="covered" data-hits="1" data-linenumber="30">
             <span class="hits">1</span>
             
 
@@ -1406,24 +1604,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="30">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="31">
             
             
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1434,18 +1621,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="33">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="33">
+            
             
 
             
 
-            <code class="ruby">  describe &#39;#preserve_special_characters&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1456,7 +1643,7 @@
 
             
 
-            <code class="ruby">    it &#39;reserves special characters and their placement in the message for restoration later&#39; do</code>
+            <code class="ruby">  describe &#39;#preserve_special_characters&#39; do</code>
           </li>
         </div>
       
@@ -1467,29 +1654,29 @@
 
             
 
+            <code class="ruby">    it &#39;reserves special characters and their placement in the message for restoration later&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="36">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      encrypt = Encrypt.new</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="36">
+          <li class="never" data-hits="" data-linenumber="37">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="37">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(encrypt.preserve_spec_chars(message)).to eq([[11, &quot;!&quot;]])</code>
           </li>
         </div>
       
@@ -1500,18 +1687,18 @@
 
             
 
-            <code class="ruby">      expect(encrypt.preserve_spec_chars(&#39;&#39;)).to eq([])</code>
+            <code class="ruby">      expect(encrypt.preserve_spec_chars(message)).to eq([[11, &quot;!&quot;]])</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="39">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="39">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(encrypt.preserve_spec_chars(&#39;&#39;)).to eq([])</code>
           </li>
         </div>
       
@@ -1522,7 +1709,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1533,18 +1720,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="42">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="42">
+            
             
 
             
 
-            <code class="ruby">  describe &#39;#restore_special_characters&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1555,7 +1742,7 @@
 
             
 
-            <code class="ruby">    it &#39;restores special characters based on the second character in the nested array&#39; do</code>
+            <code class="ruby">  describe &#39;#restore_special_characters&#39; do</code>
           </li>
         </div>
       
@@ -1566,29 +1753,29 @@
 
             
 
+            <code class="ruby">    it &#39;restores special characters based on the second character in the nested array&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      encrypt = Encrypt.new</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="45">
+          <li class="never" data-hits="" data-linenumber="46">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="46">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(encrypt.restore_spec_chars(&#39;Hello World&#39;.chars, [[11, &quot;!&quot;]])).to eq(message)</code>
           </li>
         </div>
       
@@ -1599,18 +1786,18 @@
 
             
 
-            <code class="ruby">      expect(encrypt.restore_spec_chars(&#39;Hello&#39;.chars, [])).to eq(&#39;Hello&#39;)</code>
+            <code class="ruby">      expect(encrypt.restore_spec_chars(&#39;Hello World&#39;.chars, [[11, &quot;!&quot;]])).to eq(message)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="48">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(encrypt.restore_spec_chars(&#39;Hello&#39;.chars, [])).to eq(&#39;Hello&#39;)</code>
           </li>
         </div>
       
@@ -1621,7 +1808,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1632,18 +1819,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="51">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="51">
+            
             
 
             
 
-            <code class="ruby">  describe &#39;#strip_message&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1654,7 +1841,7 @@
 
             
 
-            <code class="ruby">    it &#39;removes special_characters passed in args from a string&#39; do</code>
+            <code class="ruby">  describe &#39;#strip_message&#39; do</code>
           </li>
         </div>
       
@@ -1665,7 +1852,7 @@
 
             
 
-            <code class="ruby">      encrypt = Encrypt.new</code>
+            <code class="ruby">    it &#39;removes special_characters passed in args from a string&#39; do</code>
           </li>
         </div>
       
@@ -1676,29 +1863,29 @@
 
             
 
+            <code class="ruby">      encrypt = Encrypt.new</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="55">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      spec_chars = encrypt.preserve_spec_chars(message)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="55">
+          <li class="never" data-hits="" data-linenumber="56">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="56">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(encrypt.preserve_spec_chars(message)).to eq([[11, &quot;!&quot;]])</code>
           </li>
         </div>
       
@@ -1709,7 +1896,7 @@
 
             
 
-            <code class="ruby">      expect(encrypt.strip_message(message, spec_chars)).to eq(&#39;Hello World&#39;)</code>
+            <code class="ruby">      expect(encrypt.preserve_spec_chars(message)).to eq([[11, &quot;!&quot;]])</code>
           </li>
         </div>
       
@@ -1720,18 +1907,18 @@
 
             
 
-            <code class="ruby">      expect(encrypt.strip_message(&#39;&#39;, [])).to eq(&#39;&#39;)</code>
+            <code class="ruby">      expect(encrypt.strip_message(message, spec_chars)).to eq(&#39;Hello World&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="59">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(encrypt.strip_message(&#39;&#39;, [])).to eq(&#39;&#39;)</code>
           </li>
         </div>
       
@@ -1742,7 +1929,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1753,18 +1940,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="62">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="62">
+            
             
 
             
 
-            <code class="ruby">  describe &#39;#process&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1775,7 +1962,7 @@
 
             
 
-            <code class="ruby">    it &#39;preforms the act of encryption using assembled keys and shifts&#39; do</code>
+            <code class="ruby">  describe &#39;#process&#39; do</code>
           </li>
         </div>
       
@@ -1786,7 +1973,7 @@
 
             
 
-            <code class="ruby">      encrypt = Encrypt.new</code>
+            <code class="ruby">    it &#39;preforms the act of encryption using assembled keys and shifts&#39; do</code>
           </li>
         </div>
       
@@ -1797,29 +1984,29 @@
 
             
 
+            <code class="ruby">      encrypt = Encrypt.new</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="66">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      expected = [[[11, &quot;!&quot;]], &quot;hello world!&quot;, Key.new(key), [1, 0, 2, 5]]</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="66">
+          <li class="never" data-hits="" data-linenumber="67">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="67">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(encrypt.process(message, key, date)[0]).to eq(expected[0])</code>
           </li>
         </div>
       
@@ -1830,7 +2017,7 @@
 
             
 
-            <code class="ruby">      expect(encrypt.process(message, key, date)[1]).to eq(expected[1])</code>
+            <code class="ruby">      expect(encrypt.process(message, key, date)[0]).to eq(expected[0])</code>
           </li>
         </div>
       
@@ -1841,7 +2028,7 @@
 
             
 
-            <code class="ruby">      expect(encrypt.process(message, key, date)[2].key).to eq(expected[2].key)</code>
+            <code class="ruby">      expect(encrypt.process(message, key, date)[1]).to eq(expected[1])</code>
           </li>
         </div>
       
@@ -1852,18 +2039,18 @@
 
             
 
-            <code class="ruby">      expect(encrypt.process(message, key, date)[3]).to eq(expected[3])</code>
+            <code class="ruby">      expect(encrypt.process(message, key, date)[2].key).to eq(expected[2].key)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="71">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="71">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(encrypt.process(message, key, date)[3]).to eq(expected[3])</code>
           </li>
         </div>
       
@@ -1874,7 +2061,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1885,18 +2072,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="74">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="74">
+            
             
 
             
 
-            <code class="ruby">  describe &#39;#create_shifts&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1907,7 +2094,7 @@
 
             
 
-            <code class="ruby">    it &#39;provides the necessary rotation assignments using key and offsets&#39; do</code>
+            <code class="ruby">  describe &#39;#create_shifts&#39; do</code>
           </li>
         </div>
       
@@ -1918,7 +2105,7 @@
 
             
 
-            <code class="ruby">      encrypt = Encrypt.new</code>
+            <code class="ruby">    it &#39;provides the necessary rotation assignments using key and offsets&#39; do</code>
           </li>
         </div>
       
@@ -1929,18 +2116,18 @@
 
             
 
-            <code class="ruby">      converted_date = encrypt.process_date(date)</code>
+            <code class="ruby">      encrypt        = Encrypt.new</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="78">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="78">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">      converted_key  = Key.new(&#39;02715&#39;).process_key</code>
           </li>
         </div>
       
@@ -1951,12 +2138,67 @@
 
             
 
-            <code class="ruby">      encrypt.create_shifts(Key.new(&#39;02715&#39;), converted_date).to eq(&#39;&#39;)</code>
+            <code class="ruby">      random_key     = double(&#39;key&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="80">
+          <li class="covered" data-hits="1" data-linenumber="80">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      allow(random_key).to receive(:zip).and_return([[2, 1], [27, 0], [71, 2], [15, 5]])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="81">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      converted_date = encrypt.process_date(date)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="82">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="83">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(encrypt.create_shifts(converted_key, converted_date)).to eq([3, 27, 73, 20])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="84">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(encrypt.create_shifts(random_key, converted_date)).to eq([3, 27, 73, 20])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="85">
             
             
 
@@ -1967,7 +2209,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="81">
+          <li class="never" data-hits="" data-linenumber="86">
             
             
 
@@ -1978,7 +2220,293 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="82">
+          <li class="never" data-hits="" data-linenumber="87">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="88">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  describe &#39;#assemble_shifts_full&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="89">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;creates an array message length long for all rotation index syncing&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="90">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      encrypt        = Encrypt.new</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="91">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      converted_key  = Key.new(&#39;02715&#39;).process_key</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="92">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      converted_date = encrypt.process_date(date)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="93">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      full_shifts    = encrypt.create_shifts(converted_key, converted_date)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="94">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="95">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expected = [3, 27, 73, 20, 3, 27, 73, 20, 3, 27, 73, 20]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="96">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="97">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(encrypt.assemble_shifts_full(message, full_shifts)).to eq(expected)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="98">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="99">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="100">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="101">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  describe &#39;#encrypt&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="102">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;rotates all of the characters in the message shift number of times at corresponding indexes&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="103">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      encrypt        = Encrypt.new</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="104">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      converted_key  = Key.new(&#39;02715&#39;).process_key</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="105">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      converted_date = encrypt.process_date(date)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="106">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      single_shifts  = encrypt.create_shifts(converted_key, converted_date)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="107">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      all_shifts     = encrypt.assemble_shifts_full(message, single_shifts)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="108">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expected       = &quot;keder ohulw&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="109">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="110">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(encrypt.encrypt(&#39;hello world&#39;, all_shifts).join).to eq(expected)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="111">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="112">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="113">
             
             
 
