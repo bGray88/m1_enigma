@@ -97,4 +97,17 @@ describe Encrypt do
       expect(encrypt.assemble_shifts_full(message, full_shifts)).to eq(expected)
     end
   end
+
+  describe '#encrypt' do
+    it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
+      encrypt        = Encrypt.new
+      converted_key  = Key.new('02715').process_key
+      converted_date = encrypt.process_date(date)
+      single_shifts  = encrypt.create_shifts(converted_key, converted_date)
+      all_shifts     = encrypt.assemble_shifts_full(message, single_shifts)
+      expected       = "keder ohulw"
+
+      expect(encrypt.encrypt('hello world', all_shifts).join).to eq(expected)
+    end
+  end
 end
