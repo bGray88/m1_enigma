@@ -26,4 +26,9 @@ class Encrypt
       [index, char] if @spec_chars_set.include?(char)
     end
   end
+
+  def restore_spec_chars(message, chars)
+    chars.each { |char| message.insert(char[0], char[1]) }
+    message.join
+  end
 end
