@@ -41,4 +41,8 @@ class Encrypt
     strip_set.each { |char| message.delete(char[1]) }
     message.join
   end
+
+  def create_shifts(keys, offsets)
+    keys.zip(offsets).map { |set| set.sum }
+  end
 end
