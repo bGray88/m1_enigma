@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+require_relative '../lib/encrypt'
+
+# Enigma class
 class Enigma
   def initialize
     @encrypt = Encrypt.new
