@@ -21,4 +21,12 @@ describe Key do
       expect(key1.random_key).to eq(02715)
     end
   end
+
+  describe '#process_key' do
+    it 'prepares a key string into a usable collection for encrypting' do
+      key1 = Key.new('02715')
+
+      expect(key1.process_key).to eq([2, 27, 71, 15])
+    end
+  end
 end
