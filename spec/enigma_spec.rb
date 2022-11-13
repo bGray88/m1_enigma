@@ -22,8 +22,8 @@ describe Enigma do
       encrypted = enigma.encrypt(message, key, date)
 
       expect(encrypted[1]).to eq(message.downcase)
-      expect(encrypted[2]).to eq('')
-      expect(encrypted[3]).to eq('')
+      expect(encrypted[2].key).to eq(key)
+      expect(encrypted[3]).to eq([1, 0, 2, 5])
     end
   end
 end

@@ -49,17 +49,6 @@ describe Encrypt do
     end
   end
 
-  describe '#strip_message' do
-    it 'removes special_characters passed in args from a string' do
-      encrypt = Encrypt.new
-      spec_chars = encrypt.preserve_spec_chars(message)
-
-      expect(encrypt.preserve_spec_chars(message)).to eq([[11, "!"]])
-      expect(encrypt.strip_message(message, spec_chars)).to eq('Hello World')
-      expect(encrypt.strip_message('', [])).to eq('')
-    end
-  end
-
   describe '#process' do
     it 'preforms the act of encryption using assembled keys and shifts' do
       encrypt = Encrypt.new

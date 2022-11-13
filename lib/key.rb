@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
+require_relative '../lib/stringable'
+
 # Key class
 class Key
+  include Stringable
 
   attr_reader :key
 
@@ -15,7 +18,6 @@ class Key
 
   def process_key
     @key ||= random_key
-    pairs = @key.chars.each_cons(2).to_a
-    pairs.map { |pair| pair.join.to_i }
+    nest_pairs(split_into_pairs(@key))
   end
 end
