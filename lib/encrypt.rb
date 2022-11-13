@@ -19,11 +19,15 @@ class Encrypt
     [spec_chars, converted_message, converted_key, converted_date]
   end
 
-  def encrypt(message, shifts)
+  def encrypt_decrypt(message, shifts)
     message.chars.map.with_index do |char, index|
       char_index = @base_set.index(char)
       @base_set.rotate(char_index + shifts[index]).first
     end
+  end
+
+  def encrypt(message, shifts)
+    encrypt_decrypt(message, shifts)
   end
 
   def reverse_shifts(shifts)
