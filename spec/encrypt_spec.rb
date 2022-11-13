@@ -74,11 +74,14 @@ describe Encrypt do
 
   describe '#create_shifts' do
     it 'provides the necessary rotation assignments using key and offsets' do
-      encrypt = Encrypt.new
-      converted_key = Key.new('02715').process_key
+      encrypt        = Encrypt.new
+      converted_key  = Key.new('02715').process_key
+      random_key     = double('key')
+      allow(random_key).to receive(:zip).and_return([[2, 1], [27, 0], [71, 2], [15, 5]])
       converted_date = encrypt.process_date(date)
 
       expect(encrypt.create_shifts(converted_key, converted_date)).to eq([3, 27, 73, 20])
+      expect(encrypt.create_shifts(random_key, converted_date)).to eq([3, 27, 73, 20])
     end
   end
 end
