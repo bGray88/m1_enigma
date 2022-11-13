@@ -30,8 +30,17 @@ describe Encrypt do
     it 'reserves special characters and their placement in the message for restoration later' do
       encrypt = Encrypt.new
 
-      expect(encrypt.preserve_special_characters('Hello!')).to eq([[5, "!"]])
-      expect(encrypt.preserve_special_characters('')).to eq([])
+      expect(encrypt.preserve_spec_chars('Hello!')).to eq([[5, "!"]])
+      expect(encrypt.preserve_spec_chars('')).to eq([])
+    end
+  end
+
+  describe '#restore_special_characters' do
+    it 'restores special characters based on the second character in the nested array' do
+      encrypt = Encrypt.new
+
+      expect(encrypt.restore_spec_chars('Hello'.chars, [[5, "!"]])).to eq('Hello!')
+      expect(encrypt.restore_spec_chars('Hello'.chars, [])).to eq('Hello')
     end
   end
 end

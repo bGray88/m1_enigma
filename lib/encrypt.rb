@@ -21,7 +21,7 @@ class Encrypt
     offset.to_s[-4..-1].to_i.digits.reverse
   end
 
-  def preserve_special_characters(message)
+  def preserve_spec_chars(message)
     message.chars.filter_map.with_index do |char, index|
       [index, char] if @spec_chars_set.include?(char)
     end
