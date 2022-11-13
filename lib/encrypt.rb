@@ -45,4 +45,10 @@ class Encrypt
   def create_shifts(keys, offsets)
     keys.zip(offsets).map { |set| set.sum }
   end
+
+  def assemble_shifts_full(message, shifts)
+    (0..message.length).each_with_object([]) do |num, array|
+      array.concat(shifts) if (num % 4).zero?
+    end[0...message.length]
+  end
 end
