@@ -84,4 +84,17 @@ describe Encrypt do
       expect(encrypt.create_shifts(random_key, converted_date)).to eq([3, 27, 73, 20])
     end
   end
+
+  describe '#assemble_shifts_full' do
+    it 'creates an array message length long for all rotation index syncing' do
+      encrypt        = Encrypt.new
+      converted_key  = Key.new('02715').process_key
+      converted_date = encrypt.process_date(date)
+      full_shifts    = encrypt.create_shifts(converted_key, converted_date)
+
+      expected = [3, 27, 73, 20, 3, 27, 73, 20, 3, 27, 73, 20]
+
+      expect(encrypt.assemble_shifts_full(message, full_shifts)).to eq(expected)
+    end
+  end
 end
