@@ -5,4 +5,8 @@ module Stringable
   def split_into_pairs(chars)
     chars.chars.each_cons(2).to_a
   end
+
+  def nest_pairs(pairs)
+    pairs.map { |pair| pair.join.to_i }
+  end
 end
