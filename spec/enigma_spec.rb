@@ -6,7 +6,7 @@ require_relative '../lib/enigma'
 describe Enigma do
   let(:message) { 'Hello World!' }
   let(:key)     { '02715' }
-  let(:date)    { '04895' }
+  let(:date)    { '040895' }
 
   describe '#initialize' do
     it 'exists and has attributes' do

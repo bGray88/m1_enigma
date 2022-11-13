@@ -7,3 +7,4 @@ SimpleCov.start
 require_relative 'enigma_spec'
 require_relative 'key_spec'
 require_relative 'encrypt_spec'
+require_relative 'timeable_spec'
