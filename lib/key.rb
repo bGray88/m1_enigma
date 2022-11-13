@@ -2,5 +2,10 @@
 
 # Key class
 class Key
-  def initialize() end
+
+  attr_reader :key
+
+  def initialize(key)
+    @key = key
+  end
 end
