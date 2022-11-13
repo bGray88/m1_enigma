@@ -20,4 +20,10 @@ class Encrypt
     offset = date.to_i ** 2
     offset.to_s[-4..-1].to_i.digits.reverse
   end
+
+  def preserve_special_characters(message)
+    message.chars.filter_map.with_index do |char, index|
+      [index, char] if @spec_chars_set.include?(char)
+    end
+  end
 end
