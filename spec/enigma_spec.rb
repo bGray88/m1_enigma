@@ -26,4 +26,15 @@ describe Enigma do
       expect(encrypted[:date]).to eq('040895')
     end
   end
+
+  describe '#decrypt' do
+    it 'calls the decrypt process method to initiate the decryption' do
+      enigma = Enigma.new
+      decrypted = enigma.decrypt('keder ohulw!', key, date)
+
+      expect(decrypted[:decryption]).to eq('hello world!')
+      expect(decrypted[:key]).to eq(key)
+      expect(decrypted[:date]).to eq('040895')
+    end
+  end
 end
