@@ -15,6 +15,6 @@ module Timeable
 
   def format_date(date)
     return format_time_to_simple(date) unless date.nil?
-    format_time_to_simple(randomize_date).to_i
+    format_time_to_simple(randomize_date)
   end
 end
