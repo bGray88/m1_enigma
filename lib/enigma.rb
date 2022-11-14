@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require_relative '../lib/encrypt'
+require_relative '../lib/encrypter'
 
 # Enigma class
 class Enigma
   def initialize
-    @encrypt = Encrypt.new
+    @encrypter = Encrypter.new
   end
 
   def encrypt(message, key = nil, date = nil)
-    @encrypt.process(message, key, date)
+    @encrypter.process(message, key, date)
   end
 end

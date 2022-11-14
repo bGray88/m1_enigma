@@ -3,8 +3,8 @@
 require_relative '../lib/key'
 require_relative '../lib/timeable'
 
-# Encrypt class
-class Encrypt
+# Crypt class
+class Crypt
   include Timeable, Stringable
 
   attr_reader :base_set,
@@ -20,7 +20,10 @@ class Encrypt
     converted_message = strip_string(message.downcase, @spec_chars_set)
     converted_key     = Key.new(key)
     converted_date    = process_date(date)
-    [spec_chars, converted_message, converted_key, converted_date]
+    shifts_init       = create_shifts(converted_key.process_key, converted_date)
+    { spec_chars: spec_chars, converted_message: converted_message,
+      converted_key: converted_key, converted_date: converted_date,
+      shifts: shifts_init }
   end
 
   def encrypt_decrypt(message, shifts)
