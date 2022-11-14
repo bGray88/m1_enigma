@@ -21,9 +21,9 @@ describe Enigma do
       enigma = Enigma.new
       encrypted = enigma.encrypt(message, key, date)
 
-      expect(encrypted[1]).to eq('hello world')
-      expect(encrypted[2].key).to eq(key)
-      expect(encrypted[3]).to eq([1, 0, 2, 5])
+      expect(encrypted[:encryption]).to eq('keder ohulw!')
+      expect(encrypted[:key]).to eq(key)
+      expect(encrypted[:date]).to eq('040895')
     end
   end
 end

@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
 require 'rspec'
-require_relative '../lib/encrypt'
+require_relative '../lib/encrypter'
 require_relative '../lib/key'
 
-describe Encrypt do
+describe Encrypter do
   let(:message) { 'Hello World!' }
   let(:key)     { '02715' }
   let(:date)    { '040895' }
 
   describe '#initialize' do
     it 'exists and has attributes' do
-      encrypt = Encrypt.new
+      encrypt = Encrypter.new
 
       expect(encrypt.base_set[0]).to eq('a')
       expect(encrypt.spec_chars_set[0]).to eq('!')
-      expect(encrypt).to be_instance_of(Encrypt)
+      expect(encrypt).to be_instance_of(Encrypter)
     end
   end
 
   describe '#process_date' do
     it 'converts the date into a four element collection or random collection of four if no passed args' do
-      encrypt = Encrypt.new
+      encrypt = Encrypter.new
 
       expect(encrypt.process_date(date)).to eq([1, 0, 2, 5])
 
@@ -33,7 +33,7 @@ describe Encrypt do
 
   describe '#preserve_special_characters' do
     it 'reserves special characters and their placement in the message for restoration later' do
-      encrypt = Encrypt.new
+      encrypt = Encrypter.new
 
       expect(encrypt.preserve_spec_chars(message)).to eq([[11, "!"]])
       expect(encrypt.preserve_spec_chars('')).to eq([])
@@ -42,7 +42,7 @@ describe Encrypt do
 
   describe '#restore_special_characters' do
     it 'restores special characters based on the second character in the nested array' do
-      encrypt = Encrypt.new
+      encrypt = Encrypter.new
 
       expect(encrypt.restore_spec_chars('Hello World'.chars, [[11, "!"]])).to eq(message)
       expect(encrypt.restore_spec_chars('Hello'.chars, [])).to eq('Hello')
@@ -51,19 +51,17 @@ describe Encrypt do
 
   describe '#process' do
     it 'preforms the act of encryption using assembled keys and shifts' do
-      encrypt = Encrypt.new
-      expected = [[[11, "!"]], "hello world", Key.new(key), [1, 0, 2, 5]]
+      encrypt = Encrypter.new
 
-      expect(encrypt.process(message, key, date)[0]).to eq(expected[0])
-      expect(encrypt.process(message, key, date)[1]).to eq(expected[1])
-      expect(encrypt.process(message, key, date)[2].key).to eq(expected[2].key)
-      expect(encrypt.process(message, key, date)[3]).to eq(expected[3])
+      expect(encrypt.process(message, key, date)[:encryption]).to eq("keder ohulw!")
+      expect(encrypt.process(message, key, date)[:key]).to eq("02715")
+      expect(encrypt.process(message, key, date)[:date]).to eq("040895")
     end
   end
 
   describe '#create_shifts' do
     it 'provides the necessary rotation assignments using key and offsets' do
-      encrypt        = Encrypt.new
+      encrypt        = Encrypter.new
       converted_key  = Key.new('02715').process_key
       random_key     = double('key')
       allow(random_key).to receive(:zip).and_return([[2, 1], [27, 0], [71, 2], [15, 5]])
@@ -76,7 +74,7 @@ describe Encrypt do
 
   describe '#assemble_shifts_full' do
     it 'creates an array message length long for all rotation index syncing' do
-      encrypt        = Encrypt.new
+      encrypt        = Encrypter.new
       converted_key  = Key.new('02715').process_key
       converted_date = encrypt.process_date(date)
       full_shifts    = encrypt.create_shifts(converted_key, converted_date)
@@ -89,7 +87,7 @@ describe Encrypt do
 
   describe '#encrypt_decrypt' do
     it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
-      encrypt        = Encrypt.new
+      encrypt        = Encrypter.new
       converted_key  = Key.new('02715').process_key
       converted_date = encrypt.process_date(date)
       single_shifts  = encrypt.create_shifts(converted_key, converted_date)
@@ -102,7 +100,7 @@ describe Encrypt do
 
   describe '#reverse_shifts' do
     it 'converts the integer elements of full collection of' do
-      encrypt        = Encrypt.new
+      encrypt        = Encrypter.new
       converted_key  = Key.new('02715').process_key
       converted_date = encrypt.process_date(date)
       single_shifts  = encrypt.create_shifts(converted_key, converted_date)
@@ -115,7 +113,7 @@ describe Encrypt do
 
   describe '#decrypt' do
     it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
-      encrypt           = Encrypt.new
+      encrypt           = Encrypter.new
       converted_key     = Key.new('02715').process_key
       converted_date    = encrypt.process_date(date)
       single_shifts     = encrypt.create_shifts(converted_key, converted_date)
