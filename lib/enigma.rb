@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../lib/encrypt'
+require_relative '../lib/encrypter'
 
 # Enigma class
 class Enigma
