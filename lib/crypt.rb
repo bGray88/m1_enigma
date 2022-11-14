@@ -33,19 +33,6 @@ class Crypt
     end
   end
 
-  def encrypt(message, shifts)
-    encrypt_decrypt(message, shifts)
-  end
-
-  def decrypt(message, shifts)
-    reversed_shifts = reverse_shifts(shifts)
-    encrypt_decrypt(message, reversed_shifts)
-  end
-
-  def reverse_shifts(shifts)
-    shifts.map { |shift| -shift }
-  end
-
   def process_date(date)
     date = format_date(date)
     offset = date.to_i ** 2

@@ -93,34 +93,7 @@ describe Crypt do
       all_shifts     = crypt.assemble_shifts_full(message, single_shifts)
       expected       = "keder ohulw"
 
-      expect(crypt.encrypt('hello world', all_shifts).join).to eq(expected)
-    end
-  end
-
-  describe '#reverse_shifts' do
-    it 'converts the integer elements of full collection of' do
-      crypt        = Crypt.new
-      converted_key  = Key.new('02715').process_key
-      converted_date = crypt.process_date(date)
-      single_shifts  = crypt.create_shifts(converted_key, converted_date)
-      all_shifts     = crypt.assemble_shifts_full(message, single_shifts)
-      expected       = [-3, -27, -73, -20, -3, -27, -73, -20, -3, -27, -73, -20]
-
-      expect(crypt.reverse_shifts(all_shifts)).to eq(expected)
-    end
-  end
-
-  describe '#decrypt' do
-    it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
-      crypt           = Crypt.new
-      converted_key     = Key.new('02715').process_key
-      converted_date    = crypt.process_date(date)
-      single_shifts     = crypt.create_shifts(converted_key, converted_date)
-      all_shifts        = crypt.assemble_shifts_full(message, single_shifts)
-      encrypted_message = crypt.encrypt_decrypt('hello world', all_shifts).join
-      expected          = "hello world"
-
-      expect(crypt.decrypt(encrypted_message, all_shifts).join).to eq(expected)
+      expect(crypt.encrypt_decrypt('hello world', all_shifts).join).to eq(expected)
     end
   end
 end
