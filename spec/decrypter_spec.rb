@@ -22,7 +22,7 @@ describe Decrypter do
   describe '#reverse_shifts' do
     it 'converts the integer elements of full collection of' do
       decrypt        = Decrypter.new
-      converted_key  = Key.new('02715').process_key
+      converted_key  = Key.new('02715').crypt_key
       converted_date = decrypt.process_date(date)
       single_shifts  = decrypt.create_shifts(converted_key, converted_date)
       all_shifts     = decrypt.assemble_shifts_full(message, single_shifts)
@@ -35,7 +35,7 @@ describe Decrypter do
   describe '#decrypt' do
     it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
       decrypt           = Decrypter.new
-      converted_key     = Key.new('02715').process_key
+      converted_key     = Key.new('02715').crypt_key
       converted_date    = decrypt.process_date(date)
       single_shifts     = decrypt.create_shifts(converted_key, converted_date)
       all_shifts        = decrypt.assemble_shifts_full(message, single_shifts)
