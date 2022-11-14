@@ -62,7 +62,7 @@ describe Encrypter do
   describe '#create_shifts' do
     it 'provides the necessary rotation assignments using key and offsets' do
       encrypt        = Encrypter.new
-      converted_key  = Key.new('02715').process_key
+      converted_key  = Key.new('02715').crypt_key
       random_key     = double('key')
       allow(random_key).to receive(:zip).and_return([[2, 1], [27, 0], [71, 2], [15, 5]])
       converted_date = encrypt.process_date(date)
@@ -75,7 +75,7 @@ describe Encrypter do
   describe '#assemble_shifts_full' do
     it 'creates an array message length long for all rotation index syncing' do
       encrypt        = Encrypter.new
-      converted_key  = Key.new('02715').process_key
+      converted_key  = Key.new('02715').crypt_key
       converted_date = encrypt.process_date(date)
       full_shifts    = encrypt.create_shifts(converted_key, converted_date)
 
@@ -88,7 +88,7 @@ describe Encrypter do
   describe '#encrypt_decrypt' do
     it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
       encrypt        = Encrypter.new
-      converted_key  = Key.new('02715').process_key
+      converted_key  = Key.new('02715').crypt_key
       converted_date = encrypt.process_date(date)
       single_shifts  = encrypt.create_shifts(converted_key, converted_date)
       all_shifts     = encrypt.assemble_shifts_full(message, single_shifts)
