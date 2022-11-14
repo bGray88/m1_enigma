@@ -52,7 +52,7 @@ describe Encrypt do
   describe '#process' do
     it 'preforms the act of encryption using assembled keys and shifts' do
       encrypt = Encrypt.new
-      expected = [[[11, "!"]], "hello world!", Key.new(key), [1, 0, 2, 5]]
+      expected = [[[11, "!"]], "hello world", Key.new(key), [1, 0, 2, 5]]
 
       expect(encrypt.process(message, key, date)[0]).to eq(expected[0])
       expect(encrypt.process(message, key, date)[1]).to eq(expected[1])

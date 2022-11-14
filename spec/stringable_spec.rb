@@ -35,7 +35,7 @@ describe Stringable do
   describe '#strip_string' do
     it 'removes characters passed in array from a string' do
       encrypt    = Encrypt.new
-      spec_chars = [[11, "!"]]
+      spec_chars = ["!"]
 
       expect(encrypt.strip_string(message, spec_chars)).to eq('Hello World')
       expect(encrypt.strip_string('', [])).to eq('')
