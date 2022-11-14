@@ -54,10 +54,9 @@ describe Encrypt do
       encrypt = Encrypt.new
       expected = [[[11, "!"]], "hello world", Key.new(key), [1, 0, 2, 5]]
 
-      expect(encrypt.process(message, key, date)[0]).to eq(expected[0])
-      expect(encrypt.process(message, key, date)[1]).to eq(expected[1])
-      expect(encrypt.process(message, key, date)[2].key).to eq(expected[2].key)
-      expect(encrypt.process(message, key, date)[3]).to eq(expected[3])
+      expect(encrypt.process(message, key, date)[:encryption]).to eq("keder ohulw!")
+      expect(encrypt.process(message, key, date)[:key]).to eq("02715")
+      expect(encrypt.process(message, key, date)[:date]).to eq("040895")
     end
   end
 

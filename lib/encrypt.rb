@@ -20,7 +20,10 @@ class Encrypt
     converted_message = strip_string(message.downcase, @spec_chars_set)
     converted_key     = Key.new(key)
     converted_date    = process_date(date)
-    [spec_chars, converted_message, converted_key, converted_date]
+    shifts_init       = create_shifts(converted_key.process_key, converted_date)
+    shifts_update     = assemble_shifts_full(converted_message, shifts_init)
+    encrypted_message = encrypt_decrypt(converted_message, shifts_update)
+    { encryption: restore_spec_chars(encrypted_message, spec_chars), key: converted_key.key, date: format_date(date).to_s }
   end
 
   def encrypt_decrypt(message, shifts)
