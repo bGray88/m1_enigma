@@ -16,7 +16,7 @@ if File.exist?(read_file)
     args = args.gsub(arg2, '')
     args = args.gsub(arg3, '').strip
     args = [args, arg2, arg3]
-  elsif file_line.reverse[0] =~ /\d$/ && !file_line.reverse[1] =~ /\d$/
+  elsif file_line.reverse[0] =~ /\d$/
     arg2 = file_line.reverse[0]
     args = args.gsub(arg2, '').strip
     args = [args, arg2]
