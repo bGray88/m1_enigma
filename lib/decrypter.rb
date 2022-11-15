@@ -4,7 +4,7 @@ require_relative '../lib/key'
 require_relative '../lib/timeable'
 require_relative '../lib/crypt'
 
-# Encrypter class
+# Decrypter class
 class Decrypter < Crypt
   def process(message, key, date = nil)
     crypt_data = super
