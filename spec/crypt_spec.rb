@@ -53,8 +53,11 @@ describe Crypt do
     it 'preforms the act of encryption using assembled keys and shifts' do
       crypt = Crypt.new
 
+      expect(crypt.process(message, key, date)[:spec_chars]).to eq([[11, "!"]])
       expect(crypt.process(message, key, date)[:converted_message]).to eq("hello world")
-      expect(crypt.process(message, key, date)[:converted_key].key).to eq("02715")
+      expect(crypt.process(message, key, date)[:converted_key].key).to eq(key)
+      expect(crypt.process(message, key, date)[:converted_date]).to eq([1, 0, 2, 5])
+      expect(crypt.process(message, key, date)[:shifts]).to eq([3, 27, 73, 20])
     end
   end
 
