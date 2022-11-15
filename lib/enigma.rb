@@ -14,7 +14,7 @@ class Enigma
     @encrypter.process(message, key, date)
   end
 
-  def decrypt(message, key = nil, date = nil)
+  def decrypt(message, key, date = nil)
     @decrypter.process(message, key, date)
   end
 end
