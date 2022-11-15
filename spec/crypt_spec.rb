@@ -63,7 +63,7 @@ describe Crypt do
 
   describe '#create_shifts' do
     it 'provides the necessary rotation assignments using key and offsets' do
-      crypt        = Crypt.new
+      crypt          = Crypt.new
       converted_key  = Key.new('02715').crypt_key
       random_key     = double('key')
       allow(random_key).to receive(:zip).and_return([[2, 1], [27, 0], [71, 2], [15, 5]])
@@ -76,7 +76,7 @@ describe Crypt do
 
   describe '#assemble_shifts_full' do
     it 'creates an array message length long for all rotation index syncing' do
-      crypt        = Crypt.new
+      crypt          = Crypt.new
       converted_key  = Key.new('02715').crypt_key
       converted_date = crypt.process_date(date)
       full_shifts    = crypt.create_shifts(converted_key, converted_date)
@@ -89,7 +89,7 @@ describe Crypt do
 
   describe '#encrypt_decrypt' do
     it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
-      crypt        = Crypt.new
+      crypt          = Crypt.new
       converted_key  = Key.new('02715').crypt_key
       converted_date = crypt.process_date(date)
       single_shifts  = crypt.create_shifts(converted_key, converted_date)
