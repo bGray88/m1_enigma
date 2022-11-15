@@ -1,7 +1,7 @@
 require_relative '../lib/enigma'
 
-read_file = "#{ARGV[0]}".delete('/lib')
-write_file = "#{ARGV[1]}".delete('/lib')
+read_file = "#{ARGV[0]}".gsub('/lib', '')
+write_file = "#{ARGV[1]}".gsub('/lib', '')
 
 if File.exist?(read_file)
   enigma = Enigma.new
