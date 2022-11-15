@@ -1,7 +1,7 @@
 require_relative '../lib/enigma'
 
-read_file = "#{ARGV[0]}".delete('/lib')
-write_file = "#{ARGV[1]}".delete('/lib')
+read_file = "#{ARGV[0]}".gsub('/lib', '')
+write_file = "#{ARGV[1]}".gsub('/lib', '')
 
 if File.exist?(read_file)
   enigma = Enigma.new
@@ -16,7 +16,7 @@ if File.exist?(read_file)
     args = args.gsub(arg2, '')
     args = args.gsub(arg3, '').strip
     args = [args, arg2, arg3]
-  elsif file_line.reverse[0] =~ /\d$/ && !file_line.reverse[1] =~ /\d$/
+  elsif file_line.reverse[0] =~ /\d$/
     arg2 = file_line.reverse[0]
     args = args.gsub(arg2, '').strip
     args = [args, arg2]

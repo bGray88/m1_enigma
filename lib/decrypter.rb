@@ -6,7 +6,7 @@ require_relative '../lib/crypt'
 
 # Encrypter class
 class Decrypter < Crypt
-  def process(message, key = nil, date = nil)
+  def process(message, key, date = nil)
     crypt_data = super
     shifts_reversed   = reverse_shifts(assemble_shifts_full(crypt_data[:converted_message], crypt_data[:shifts]))
     decrypted_message = encrypt_decrypt(crypt_data[:converted_message], shifts_reversed)
