@@ -32,21 +32,6 @@ describe Decrypter do
     end
   end
 
-  describe '#decrypt' do
-    it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
-      decrypt           = Decrypter.new
-      converted_key     = Key.new('02715').crypt_key
-      converted_date    = decrypt.process_date(date)
-      single_shifts     = decrypt.create_shifts(converted_key, converted_date)
-      all_shifts        = decrypt.assemble_shifts_full(message, single_shifts)
-      reverse_shifts    = decrypt.reverse_shifts(all_shifts)
-      encrypted_message = decrypt.encrypt_decrypt('hello world', all_shifts).join
-      expected          = "hello world"
-
-      expect(decrypt.encrypt_decrypt(encrypted_message, reverse_shifts).join).to eq(expected)
-    end
-  end
-
   describe '#process_date' do
     it 'converts the date into a four element collection or random collection of four if no passed args' do
       decrypt = Decrypter.new
@@ -115,14 +100,16 @@ describe Decrypter do
 
   describe '#encrypt_decrypt' do
     it 'rotates all of the characters in the message shift number of times at corresponding indexes' do
-      decrypt        = Decrypter.new
-      converted_key  = Key.new('02715').crypt_key
-      converted_date = decrypt.process_date(date)
-      single_shifts  = decrypt.create_shifts(converted_key, converted_date)
-      all_shifts     = decrypt.assemble_shifts_full(message, single_shifts)
-      expected       = "keder ohulw"
+      decrypt           = Decrypter.new
+      converted_key     = Key.new('02715').crypt_key
+      converted_date    = decrypt.process_date(date)
+      single_shifts     = decrypt.create_shifts(converted_key, converted_date)
+      all_shifts        = decrypt.assemble_shifts_full(message, single_shifts)
+      reverse_shifts    = decrypt.reverse_shifts(all_shifts)
+      encrypted_message = decrypt.encrypt_decrypt('hello world', all_shifts).join
+      expected          = "hello world"
 
-      expect(decrypt.encrypt_decrypt('hello world', all_shifts).join).to eq(expected)
+      expect(decrypt.encrypt_decrypt(encrypted_message, reverse_shifts).join).to eq(expected)
     end
   end
 end
